@@ -1,6 +1,6 @@
 import { Telegraf, Markup } from "telegraf";
 import "dotenv/config";
-import http from "http";
+
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.telegram.setMyCommands([
@@ -997,27 +997,3 @@ console.log("Бот успішно оновлений і готовий до р�
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
-
-// --- ЗАГЛУШКА ДЛЯ RENDER (ЩОБ НЕ ПАДАВ ДЕПЛОЙ) ---
-const PORT = process.env.PORT || 3000;
-http
-  .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("!!!\n");
-  })
-  .listen(PORT, () => {
-    console.log(`Слухаю порт ${PORT} для Render...`);
-  });
-// --- ДОДАНО ДЛЯ RENDER ---
-import express from "express";
-const app = express();
-const port = process.env.PORT || 3000;
-
-app.get("/", (req, res) => {
-  res.send("Бот працює і на зв’язку!");
-});
-
-app.listen(port, () => {
-  console.log(`Сервер успішно запущений на порту ${port}`);
-});
-// -------------------------
