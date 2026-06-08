@@ -135,7 +135,7 @@ const galleries = {
     },
     {
       type: "video",
-      media: { source: "./media/dog_video_1.mov" },
+      media: { source: "./media/dog_video_1.MOV" },
       caption: "Вколов носа 🦔",
     },
   ],
@@ -153,17 +153,17 @@ const galleries = {
     },
     {
       type: "video",
-      media: { source: "./media/selo_video_1.mov" },
+      media: { source: "./media/selo_video_1.MOV" },
       caption: "Качечки восени🍂🎥",
     },
     {
       type: "video",
-      media: { source: "./media/selo_video_2.mov" },
+      media: { source: "./media/selo_video_2.MOV" },
       caption: "Качечки зимою ☃️🎥",
     },
     {
       type: "video",
-      media: { source: "./media/selo_video_3.mov" },
+      media: { source: "./media/selo_video_3.MOV" },
       caption: "Вперше побачила такий великий місяць🫣",
     },
   ],
@@ -276,22 +276,22 @@ const galleries = {
     },
     {
       type: "video",
-      media: { source: "./media/sky_video_1.mov" },
+      media: { source: "./media/sky_video_1.MOV" },
       caption: "1 🎥",
     },
     {
       type: "video",
-      media: { source: "./media/sky_video_2.mov" },
+      media: { source: "./media/sky_video_2.MOV" },
       caption: "2 🎥",
     },
     {
       type: "video",
-      media: { source: "./media/sky_video_3.mov" },
+      media: { source: "./media/sky_video_3.MOV" },
       caption: "3 🎥",
     },
     {
       type: "video",
-      media: { source: "./media/sky_video_4.mov" },
+      media: { source: "./media/sky_video_4.MOV" },
       caption: "4 🎥",
     },
   ],
@@ -431,7 +431,7 @@ bot.action("fun_tv", (ctx) =>
   sendSingleMedia(
     ctx,
     "video",
-    { source: "./media/fun_tv.mov" }, // або .mov, якщо відео з айфона
+    { source: "./media/fun_tv.MOV" }, // або .mov, якщо відео з айфона
     "📺 <b>CAST</b>\n\nЗ сіс відкрили для себе транслювання екрану телефона на тєлік🤯",
   ),
 );
@@ -439,7 +439,7 @@ bot.action("fun_movies", (ctx) =>
   sendSingleMedia(
     ctx,
     "video",
-    { source: "./media/fun_movies.mov" }, // або .mov
+    { source: "./media/fun_movies.MOV" }, // або .mov
     "🍿 <b>Фільми</b>\n\nЩо ж фільми я дивлюсь рідко, але якщо й беруся за них, то завжди оберу жахи. Мій топ серед фільмів жахів це 3 частини Закляття. А перший фільм жахів, який я подивилася це Монахиня, і це просто класна комедія, ахахахах😁",
   ),
 );
@@ -448,7 +448,7 @@ bot.action("fun_cacti", (ctx) =>
   sendSingleMedia(
     ctx,
     "video",
-    { source: "./media/fun_cacti.mov" }, // або .mov
+    { source: "./media/fun_cacti.MOV" }, // або .mov
     "🌵 <b>Кактуси</b>\n\n Кактус, що вижив...\n Мої улюблені рослини це кактуси. В мене їх було аж 6, але з моїм умінням їх поливати 3 зігнило і 2 засохло (я теж не знала, що можна засушити кактуси, виявляється можна😬), і лише один єдиний досі живий, так ще й квітне!!😍",
   ),
 );
