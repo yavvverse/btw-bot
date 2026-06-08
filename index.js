@@ -1008,3 +1008,16 @@ http
   .listen(PORT, () => {
     console.log(`Слухаю порт ${PORT} для Render...`);
   });
+// --- ДОДАНО ДЛЯ RENDER ---
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("!!!!");
+});
+
+app.listen(port, () => {
+  console.log(`Сервер успішно запущений на порту ${port}`);
+});
+// -------------------------
