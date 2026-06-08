@@ -646,11 +646,22 @@ const sendQuestStep = (ctx, userId, isFirst = false) => {
   const scene = questScenarios[session.currentSceneId];
 
   const hud = `<b>[ СТАТУС ]</b>\n❤️ Нерви: <code>${session.stats.hp}/100</code> | 🧠 Знання: <code>${session.stats.xp}</code>\n☕ Кава: <code>${session.stats.cof}</code> | 🤝 Репутація: <code>${session.stats.rep}/100</code>\n\n`;
-  const sceneText = `<b>📍 ${scene.chapter} | ${scene.location}</b>\n\n${scene.text}`;
+
+  // Додаємо емодзі-цифри
+  const numberEmojis = ["1️⃣", "2️⃣", "3️⃣"];
+
+  // Формуємо текст з варіантами вибору прямо в повідомленні
+  let choicesText = "\n\n<b>Обери дію:</b>";
+  scene.choices.forEach((choice, index) => {
+    choicesText += `\n${numberEmojis[index]} ${choice.text}`;
+  });
+
+  const sceneText = `<b>📍 ${scene.chapter} | ${scene.location}</b>\n\n${scene.text}${choicesText}`;
   const fullMessage = session.history + hud + sceneText;
 
+  // Робимо кнопки короткими і красивими
   const buttons = scene.choices.map((choice, index) => [
-    Markup.button.callback(choice.text, `rpg_${index}`),
+    Markup.button.callback(`${numberEmojis[index]} Обрати`, `rpg_${index}`),
   ]);
 
   if (isFirst) {
@@ -924,11 +935,23 @@ const sendQuestion = (ctx, userId) => {
   const session = userSessions[userId];
   const questionData = quizQuestions[session.currentQuestion];
 
-  const buttons = questionData.options.map((opt) => [
-    Markup.button.callback(opt.text, `quiz_${opt.type}`),
-  ]);
+  const numberEmojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣"];
 
-  const messageText = `<b>${questionData.question}</b>`;
+  // Виводимо довгі варіанти відповідей у текст повідомлення
+  let optionsText = "";
+  questionData.options.forEach((opt, index) => {
+    optionsText += `\n\n${numberEmojis[index]} ${opt.text}`;
+  });
+
+  const messageText = `<b>${questionData.question}</b>${optionsText}`;
+
+  // Кнопки стають компактними
+  const buttons = questionData.options.map((opt, index) => [
+    Markup.button.callback(
+      `${numberEmojis[index]} Відповісти`,
+      `quiz_${opt.type}`,
+    ),
+  ]);
 
   if (session.currentQuestion === 0) {
     ctx.reply(messageText, {
@@ -942,7 +965,6 @@ const sendQuestion = (ctx, userId) => {
     });
   }
 };
-
 bot.action(/quiz_(ebec|hack|btw|fair)/, (ctx) => {
   const userId = ctx.from.id;
   const session = userSessions[userId];
